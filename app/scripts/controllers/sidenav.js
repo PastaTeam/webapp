@@ -50,7 +50,7 @@ angular.module('fieraApp')
             {
                 title: 'Registrati',
                 icon: 'assignment',
-                link: '/signup'
+                link: '/register'
             },
             {
                 title: 'Accedi',
