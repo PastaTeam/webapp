@@ -71,14 +71,28 @@ angular.module('fieraApp')
                 });
         };
 
-        this.signupUser = function (fname, lname, email, paypal, password, passwordConfirm) {
-            return ResourcesGeneratorService.getResource(null, 'signup').save({
-                first_name: fname,
-                last_name: lname,
+        this.registerPersona = function (nome, cognome, email, password) {
+            return ResourcesGeneratorService.getResource(null, 'register/persona').save({
+                nome: nome,
+                cognome: cognome,
                 email: email,
-                paypal: paypal,
-                password: password,
-                passwordConfirm: passwordConfirm
+                password: password
+            }).$promise
+                .then(function (response) {
+                    if (response.error)
+                        return $q.reject(response.error);
+
+                    return response;
+                }, function (error) {
+                    return $q.reject(error.data);
+                });
+        };
+
+        this.registerAzienda = function (nome, email, password) {
+            return ResourcesGeneratorService.getResource(null, 'register/azienda').save({
+                nome: nome,
+                email: email,
+                password: password
             }).$promise
                 .then(function (response) {
                     if (response.error)

@@ -19,7 +19,7 @@ angular.module('fieraApp')
         $scope.user = {
             email: '',
             password: '',
-            type: 'utente'
+            type: 'persona'
         };
 
         $scope.login = function () {

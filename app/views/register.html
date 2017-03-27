@@ -7,8 +7,8 @@
                 <p>Tipo di utente:</p>
                 <md-input-container class="md-block no-bottom-margin">
                     <md-radio-group ng-model="user.type">
-                        <md-radio-button value="utente" class="md-primary"> Utente </md-radio-button>
-                        <md-radio-button value="azienda"> Azienda </md-radio-button>
+                        <md-radio-button value="persona" class="md-primary"> Persona </md-radio-button>
+                        <md-radio-button value="azienda" class="md-primary"> Azienda </md-radio-button>
                     </md-radio-group>
                 </md-input-container>
 
@@ -20,7 +20,7 @@
                     </div>
                 </md-input-container>
 
-                <md-input-container ng-hide="user.type != 'utente'" class="md-block no-bottom-margin">
+                <md-input-container ng-if="user.type == 'persona'" class="md-block no-bottom-margin">
                     <label>Cognome</label>
                     <input name="name" ng-model="user.surname" required>
                     <div ng-messages="registerForm.name.$error">

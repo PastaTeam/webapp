@@ -17,16 +17,24 @@ angular.module('fieraApp')
             surname: '',
             email: '',
             password: '',
-            type: ''
+            type: 'persona'
         };
 
         $scope.register = function () {
             $scope.loading = true;
             $scope.error = null;
-            AuthService.login($scope.user.email, $scope.user.password, $scope.user.type, $scope.user.name)
+
+            var promise = null;
+            if ($scope.user.type == 'persona') {
+                promise = AuthService.registerPersona($scope.user.name, $scope.user.surname, $scope.user.email, $scope.user.password);
+            } else {
+                promise = AuthService.registerAzienda($scope.user.name, $scope.user.email, $scope.user.password);
+            }
+
+            promise
                 .then(function () {
                     $scope.loading = false;
-                    $location.path('/');
+                    $location.path('/login');
                 }, function (error) {
                     $scope.error = error;
                     $scope.loading = false;
