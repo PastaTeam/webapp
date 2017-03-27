@@ -9,10 +9,5 @@
  */
 angular.module('fieraApp')
     .controller('MainCtrl', function ($scope, $rootScope, AuthService) {
-        if (!AuthService.isLogged()) {
-            AuthService.goToLogin();
-            return;
-        }
-
         $rootScope.$emit('page-title', 'Dashboard');
     });
