@@ -1,10 +1,9 @@
 <!doctype html>
-<html>
+<html  ng-app="fieraApp">
 <head>
     <link rel="stylesheet" type="text/css" href="app/styles/main.scss"/>
     <meta charset="utf-8">
-    <title>NO TITLE</title> <!-- TODO -->
-    <meta name="description" content="NO DESCRIPTION"> <!-- TODO -->
+    <title ng-controller="ToolbarCtrl">{{pageTitle}}</title>
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -18,7 +17,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="fieraApp">
+<body>
 
 <div layout="column" style="height: 100%;" md-theme="{{theme}}" ng-cloak>
     <section layout="row" flex="" ng-controller="SidenavCtrl">
@@ -45,7 +44,7 @@
             <md-content class="sidenav-content layout-fill-height-fix" layout-fill>
                 <md-list>
                     <md-divider class="divider-space-bottom"></md-divider>
-                    <md-list-item ng-click="handleClick(entry, $event)" ng-repeat="entry in menuEntries"
+                    <md-list-item ng-if="canShow(entry)" ng-click="handleClick(entry, $event)" ng-repeat="entry in menuEntries"
                                   class="sidenav-list-item">
                         <md-icon class="list-icon">{{entry.icon}}</md-icon>
                         <p>{{entry.title}}</p>

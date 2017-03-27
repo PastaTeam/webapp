@@ -45,19 +45,30 @@ angular.module('fieraApp')
             {
                 title: 'Aggiungi Prodotto',
                 icon: 'library_add',
-                link: '/prodotti/new'
+                link: '/prodotti/new',
+                restrict: ['azienda']
             },
             {
                 title: 'Registrati',
                 icon: 'assignment',
-                link: '/register'
+                link: '/register',
+                restrict: ['guest']
             },
             {
                 title: 'Accedi',
                 icon: 'fingerprint',
-                link: '/login'
+                link: '/login',
+                restrict: ['guest']
             }
         ];
+
+        $scope.canShow = function (entry) {
+            if (!entry.restrict) return true;
+
+            return entry.restrict.every(function (i) {
+                return i == AuthService.getRole();
+            });
+        };
 
         $scope.logout = function (entry, event) {
             AuthService.logout()
