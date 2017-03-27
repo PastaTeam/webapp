@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="app/styles/main.scss"/>
+    <meta charset="utf-8">
+    <title>NO TITLE</title> <!-- TODO -->
+    <meta name="description" content="NO DESCRIPTION"> <!-- TODO -->
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="fieraApp">
+
+<div layout="column" style="height: 100%;" md-theme="{{theme}}" ng-cloak>
+    <section layout="row" flex="" ng-controller="SidenavCtrl">
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-md') && !closed">
+            <div class="sidenav-top">
+                <div id="avatar" class="blockies-avatar" ng-blockies="account.email"></div>
+                {{account.email}}
+                <md-menu md-position-mode="target-left bottom" style="margin-bottom: 1px;">
+                    <md-button aria-label="Open account options" class="md-icon-button"
+                               ng-click="openAccountMenu($mdMenu, $event)">
+                        <md-icon>expand_more</md-icon>
+                    </md-button>
+                    <md-menu-content width="3">
+                        <md-menu-item>
+                            <md-button>
+                                <md-icon>settings</md-icon>
+                                Preferences
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="logout();">
+                                <md-icon>exit_to_app</md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+            <md-content class="sidenav-content layout-fill-height-fix" layout-fill>
+                <md-list>
+                    <md-divider class="divider-space-bottom"></md-divider>
+                    <md-list-item ng-click="handleClick(entry, $event)" ng-repeat="entry in menuEntries"
+                                  class="sidenav-list-item">
+                        <md-icon class="list-icon">{{entry.icon}}</md-icon>
+                        <p>{{entry.title}}</p>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+
+        <md-content flex style="position: relative;">
+            <md-toolbar class="md-theme-indigo" style="position: initial;" ng-controller="ToolbarCtrl" ng-hide="hide">
+                <h1 class="md-toolbar-tools">
+                    <md-button hide-gt-md class="md-icon-button" style="font-size: 21px; margin-right: 2px;"
+                               ng-click="openSidenav()"
+                               aria-label="Open Sidenav">
+                        <md-icon>menu</md-icon>
+                    </md-button>
+                    {{pageTitle}}
+                </h1>
+                <md-progress-circular md-mode="indeterminate" class="central" ng-if="loading"></md-progress-circular>
+            </md-toolbar>
+            <div style="position: relative;" class="layout-fill-height-fix" ng-view layout-fill></div>
+        </md-content>
+    </section>
+</div>
+
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/blockies/blockies.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-moment/angular-moment.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/providers/config.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/sidenav.js"></script>
+<script src="scripts/controllers/toolbar.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/dialog.js"></script>
+<script src="scripts/controllers/signup.js"></script>
+<script src="scripts/controllers/widgets/balance.js"></script>
+<script src="scripts/services/resourcesgenerator.js"></script>
+<script src="scripts/services/auth.js"></script>
+<script src="scripts/services/balance.js"></script>
+<script src="scripts/directives/blockies.js"></script>
+<script src="scripts/directives/customvalidation.js"></script>
+<script src="scripts/directives/widgets/balance.js"></script>
+<!-- endbuild -->
+</body>
+</html>

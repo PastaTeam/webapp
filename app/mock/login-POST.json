@@ -1,0 +1,10 @@
+{
+    "error": null,
+    "id": 1,
+    "token": "authtoken",
+    "account": {
+        "email": "aaa@aaa.com",
+        "first_name": "Alekos",
+        "last_name": "Filini"
+    }
+}

@@ -1,0 +1,195 @@
+// bower:scss
+// endbower
+
+$light-grey: #808080;
+
+.sidenav-top {
+    color: $light-grey;
+
+    padding: 16px 16px 0;
+
+    #avatar {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+    }
+}
+
+.blockies-avatar {
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.divider-space-bottom {
+    padding-bottom: 8px;
+}
+
+md-icon.list-icon {
+    margin-top: 12px !important;
+}
+
+.sidenav-list-item {
+    height: 52px;
+}
+
+#skyline-image {
+    height: 220px;
+    background: url('../images/skyline.jpg') center;
+    -webkit-background-size: cover;
+    background-size: cover;
+
+    width: calc(100% + 16px); /* cover the card padding */
+    margin-left: -8px;
+    margin-top: -8px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+#login-card {
+    margin: 35px auto;
+
+    .blockies-avatar {
+        width: 100px;
+        height: 100px;
+
+        margin: auto;
+
+        &.account-circle {
+            background-image: url('../images/ic_account_circle_black_48dp.png');
+            opacity: 0.4;
+        }
+    }
+
+    .avatar-icon {
+        display: block;
+        width: 118px;
+        height: 108px;
+        font-size: 118px;
+        opacity: 0.64;
+        margin: -8px auto auto;
+    }
+
+    md-card-content {
+        padding: 25px 16px 0 16px;
+
+        .account-info {
+            margin-top: 8px;
+            text-align: center;
+            opacity: 0.8;
+        }
+    }
+
+    md-card-actions {
+        padding-bottom: 8px;
+    }
+}
+
+.login-bottom-link {
+    text-align: center;
+    display: block;
+}
+
+button {
+    &.button-100 {
+        width: calc(100% - 16px);
+        margin: auto !important;
+    }
+}
+
+md-input-container {
+    &.no-bottom-margin {
+        margin-bottom: 0;
+    }
+}
+
+.sign-in-title {
+    text-align: center;
+    font-weight: 100;
+    font-size: 5em;
+    margin-bottom: 25px;
+
+}
+
+.button-loading {
+    height: 25px !important;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+
+    margin-top: -11px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hint {
+    /* Position the hint */
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+    /* Copy styles from ng-messages */
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    /* Set our own color */
+    color: grey;
+}
+
+.hint.ng-hide,
+.hint.ng-enter,
+.hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0;
+}
+
+.hint.ng-leave,
+.hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1;
+}
+
+md-card-header {
+    padding: 16px !important;
+
+    &.loading {
+        padding-top: 16px - 5px !important; /* progress bar height */
+    }
+
+    md-card-header-text {
+        margin-left: 12px;
+    }
+
+    button.md-button {
+        margin-right: 0 !important;
+    }
+}
+
+md-card-content.widget-content {
+    padding-top: 0;
+
+    h2 {
+        margin: 0;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 6px;
+    }
+}
+
+.grey-text {
+    color: rgba(0,0,0,0.54);
+}
+
+.pointer {
+    cursor: pointer;
+    outline: none;
+}
+
+.layout-fill-height-fix {
+    height: initial;
+    min-height: initial;
+}
