@@ -27,18 +27,12 @@
             <div class="sidenav-top">
                 <div id="avatar" class="blockies-avatar" ng-blockies="account.email"></div>
                 {{account.email}}
-                <md-menu md-position-mode="target-left bottom" style="margin-bottom: 1px;">
+                <md-menu md-position-mode="target-left bottom" ng-if="account.role != 'guest'" style="margin-bottom: 1px;">
                     <md-button aria-label="Open account options" class="md-icon-button"
                                ng-click="openAccountMenu($mdMenu, $event)">
                         <md-icon>expand_more</md-icon>
                     </md-button>
                     <md-menu-content width="3">
-                        <md-menu-item>
-                            <md-button>
-                                <md-icon>settings</md-icon>
-                                Preferences
-                            </md-button>
-                        </md-menu-item>
                         <md-menu-item>
                             <md-button ng-click="logout();">
                                 <md-icon>exit_to_app</md-icon>
@@ -101,6 +95,7 @@
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/sidenav.js"></script>
 <script src="scripts/controllers/toolbar.js"></script>
+<script src="scripts/controllers/login.js"></script>
 <script src="scripts/services/resourcesgenerator.js"></script>
 <script src="scripts/services/auth.js"></script>
 <script src="scripts/directives/blockies.js"></script>

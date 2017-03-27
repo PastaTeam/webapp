@@ -12,7 +12,13 @@ angular.module('fieraApp')
         var authToken = $window.localStorage.getItem('authToken');
         var userId = null;
         var isLogged = false;
-        var loginResponse = {};
+        var loginResponse = {
+            account: {
+                email: 'Guest User',
+                role: 'guest'
+            }
+        };
+        var role = 'guest';
 
         this.getLoginResponse = function () {
             return loginResponse;
@@ -34,10 +40,15 @@ angular.module('fieraApp')
             return userId;
         };
 
-        this.login = function (email, password) {
+        this.getRole = function () {
+            return role;
+        };
+
+        this.login = function (email, password, type) {
             return ResourcesGeneratorService.getResource(null, 'login').save({
                 email: email,
-                password: password
+                password: password,
+                type: type
             }).$promise
                 .then(function (response) {
                     if (response.error)
@@ -46,6 +57,7 @@ angular.module('fieraApp')
                     $window.localStorage.setItem('authToken', response.token);
                     authToken = response.token;
                     userId = response.id;
+                    role = response.role;
                     isLogged = true;
                     loginResponse = response;
 
@@ -59,7 +71,7 @@ angular.module('fieraApp')
                 });
         };
 
-        this.signup = function (fname, lname, email, paypal, password, passwordConfirm) {
+        this.signupUser = function (fname, lname, email, paypal, password, passwordConfirm) {
             return ResourcesGeneratorService.getResource(null, 'signup').save({
                 first_name: fname,
                 last_name: lname,
@@ -86,8 +98,14 @@ angular.module('fieraApp')
                 .then(function (response) {
                     $window.localStorage.removeItem('authToken');
                     authToken = null;
+                    role = 'guest';
                     isLogged = false;
-                    loginResponse = null;
+                    loginResponse = {
+                        account: {
+                            email: 'Guest User',
+                            role: 'guest'
+                        }
+                    };
 
                     return response;
                 }, function (error) {
@@ -106,6 +124,7 @@ angular.module('fieraApp')
 
                     isLogged = true;
                     loginResponse = response;
+                    role = response.role;
                     userId = response.id;
 
                     return response;

@@ -13,6 +13,7 @@ angular.module('fieraApp')
         $scope.authService = AuthService;
 
         $scope.account = {};
+
         $scope.$watch(AuthService.getLoginResponse, function (newValue) {
             if (newValue) $scope.account = newValue.account;
             else $scope.account = {};
@@ -37,21 +38,24 @@ angular.module('fieraApp')
 
         $scope.menuEntries = [
             {
-                title: 'Dashboard',
-                icon: 'home',
+                title: 'Lista Aziende',
+                icon: 'library_books',
                 link: '/'
             },
             {
-                title: 'Balance',
-                icon: 'monetization_on',
-                link: '/balance'
+                title: 'Aggiungi Azienda',
+                icon: 'library_add',
+                link: '/aziende/new'
             },
             {
-                title: 'About',
-                icon: 'info',
-                callback: function (entry, event) {
-                    openAboutDialog(event)
-                }
+                title: 'Registrati',
+                icon: 'assignment',
+                link: '/signup'
+            },
+            {
+                title: 'Accedi',
+                icon: 'fingerprint',
+                link: '/login'
             }
         ];
 
@@ -60,6 +64,7 @@ angular.module('fieraApp')
                 .then(function () {
                     $location.path('/login');
                 });
+            $mdSidenav('left').close();
         };
 
         $scope.handleClick = function (entry, event) {
@@ -70,32 +75,6 @@ angular.module('fieraApp')
 
             $mdSidenav('left').close();
         };
-
-        function openAboutDialog(ev) {
-            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $rootScope.customFullscreen;
-
-            console.log($rootScope.theme);
-            $mdDialog.show({
-                controller: 'DialogCtrl',
-                templateUrl: 'views/about.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
-                fullscreen: useFullScreen,
-                locals: {
-                    items: {
-                        clientVersion: Config.getVersion(),
-                        rootScope: $rootScope
-                    }
-                }
-            });
-
-            $rootScope.$watch(function () {
-                return $mdMedia('xs') || $mdMedia('sm');
-            }, function (wantsFullScreen) {
-                $rootScope.customFullscreen = (wantsFullScreen === true);
-            });
-        }
 
         $scope.goTo = function (path) {
             $location.path(path);

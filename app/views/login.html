@@ -1,0 +1,42 @@
+<h1 class="sign-in-title md-headline">Accedi</h1>
+
+<div layout="row">
+    <md-card id="login-card" flex-gt-xs="50" flex="100" flex-gt-md="30">
+        <md-card-content>
+            <form name="loginForm">
+                <md-input-container class="md-block no-bottom-margin">
+                    <label>Email</label>
+                    <input name="email" ng-model="user.email" required>
+                    <div ng-messages="loginForm.email.$error">
+                        <div ng-message="required">Completa questo campo</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block no-bottom-margin">
+                    <label>Password</label>
+                    <input name="password" ng-model="user.password" type="password" required>
+                    <div ng-messages="loginForm.password.$error">
+                        <div ng-message="required">Completa questo campo</div>
+                    </div>
+                </md-input-container>
+
+                <p>Tipo di accesso:</p>
+                <md-input-container class="md-block no-bottom-margin">
+                    <md-radio-group ng-model="user.type">
+                        <md-radio-button value="utente" class="md-primary"> Utente </md-radio-button>
+                        <md-radio-button value="azienda"> Azienda </md-radio-button>
+                    </md-radio-group>
+                </md-input-container>
+            </form>
+
+            <p ng-if="error">{{error}}</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised md-primary button-100" ng-click="login();"
+                       ng-disabled="loading || loginForm.$invalid ">
+                <span ng-if="!loading">Accedi</span>
+                <md-progress-circular md-mode="indeterminate" ng-if="loading" class="button-loading"></md-progress-circular>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>

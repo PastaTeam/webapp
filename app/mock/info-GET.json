@@ -4,6 +4,7 @@
     "account": {
         "email": "alekos.filini@gmail.com",
         "first_name": "Alekos",
-        "last_name": "Filini"
+        "last_name": "Filini",
+        "role": "azienda"
     }
 }
