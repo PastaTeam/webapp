@@ -43,9 +43,9 @@ angular.module('fieraApp')
                 link: '/'
             },
             {
-                title: 'Aggiungi Azienda',
+                title: 'Aggiungi Prodotto',
                 icon: 'library_add',
-                link: '/aziende/new'
+                link: '/prodotti/new'
             },
             {
                 title: 'Registrati',
@@ -62,7 +62,7 @@ angular.module('fieraApp')
         $scope.logout = function (entry, event) {
             AuthService.logout()
                 .then(function () {
-                    $location.path('/login');
+                    $location.path('/');
                 });
             $mdSidenav('left').close();
         };

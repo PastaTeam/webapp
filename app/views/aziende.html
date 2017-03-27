@@ -1,0 +1,57 @@
+<div layout="row">
+    <md-card flex="100" ng-if="!id_prodotto">
+        <md-card-header style="padding-bottom: 0;">
+            <md-card-avatar>
+                <md-icon class="md-user-avatar">library_books</md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-title">Lista prodotti</span>
+                <span class="md-subhead">Seleziona un prodotto per commentarlo</span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-card-content style="padding: 0;">
+            <md-list flex>
+                <md-list-item ng-repeat="prodotto in prodotti" ng-click="goToProdotto(prodotto.ID);">
+                    <md-icon>book</md-icon>
+                    <p>{{prodotto.nome}}</p>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+
+    <md-card flex="100" ng-if="id_prodotto">
+        <md-card-header style="padding-bottom: 0;">
+            <md-card-avatar>
+                <md-icon class="md-user-avatar">book</md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-title">{{prodotto.nome}}</span>
+                <span class="md-subhead">{{prodotto.azienda.nome}}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-card-content style="padding: 0;">
+            <div style="padding: 0 16px; ">
+                <p style="margin-bottom: 0;">
+                    {{prodotto.descrizione}}
+                </p>
+                <h3 style="margin-bottom: 0;">Commenti</h3>
+            </div>
+            <md-list flex>
+                <md-list-item ng-if="isLogged" ng-click="openComment($event);" class="md-2-line">
+                    <md-icon>add_circle</md-icon>
+                    <div class="md-list-item-text">
+                        <h3>Nuovo commento</h3>
+                        <p>Aggiungi un commento a questo prodotto</p>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-repeat="commento in commenti" class="md-2-line">
+                    <md-icon>comment</md-icon>
+                    <div class="md-list-item-text">
+                        <h3>{{commento.persona.nome}} {{commento.persona.cognome}}</h3>
+                        <p>{{commento.commento}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>

@@ -1,0 +1,21 @@
+<div layout="row">
+    <md-card flex="100">
+        <md-card-header style="padding-bottom: 0;">
+            <md-card-avatar>
+                <md-icon class="md-user-avatar">library_books</md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-title">Lista aziende</span>
+                <span class="md-subhead">Seleziona un'azienda per visualizzare i prodotti</span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-card-content style="padding: 0;">
+            <md-list flex>
+                <md-list-item ng-repeat="azienda in aziende" ng-click="goToAzienda(azienda.ID);">
+                    <md-icon>book</md-icon>
+                    <p>{{azienda.nome}}</p>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>

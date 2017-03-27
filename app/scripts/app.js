@@ -30,6 +30,10 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
+            .when('/aziende/:id_azienda/:id_prodotto?', {
+                templateUrl: 'views/aziende.html',
+                controller: 'AziendeCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

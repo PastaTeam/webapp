@@ -57,7 +57,7 @@ angular.module('fieraApp')
                     $window.localStorage.setItem('authToken', response.token);
                     authToken = response.token;
                     userId = response.id;
-                    role = response.role;
+                    role = response.account.role;
                     isLogged = true;
                     loginResponse = response;
 
@@ -124,7 +124,7 @@ angular.module('fieraApp')
 
                     isLogged = true;
                     loginResponse = response;
-                    role = response.role;
+                    role = response.account.role;
                     userId = response.id;
 
                     return response;

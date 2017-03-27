@@ -1,0 +1,9 @@
+{
+    "nome": "asd",
+    "descrizione": "dddd",
+    "azienda": {
+        "ID": 5,
+        "nome": "Nome Azienda"
+    },
+    "ID": 4
+}
