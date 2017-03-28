@@ -57,7 +57,7 @@ angular.module('fieraApp')
                         commento: result
                     });
 
-                    return CommentiService.addCommento(result);
+                    return CommentiService.addCommento(result, $routeParams.id_prodotto);
                 });
             };
 

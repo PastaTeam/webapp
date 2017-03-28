@@ -14,13 +14,14 @@ angular.module('fieraApp')
                 .then(ResourcesGeneratorService.successHandler, ResourcesGeneratorService.failureHandler);
         };
 
-        this.addCommento = function (commento) {
+        this.addCommento = function (commento, prodotto) {
             if (!AuthService.isLogged() || AuthService.getRole() != 'persona') {
                 return $q.reject('Invalid session or role');
             }
 
             return ResourcesGeneratorService.getResource(AuthService.getAuthToken(), 'commenti').save({
-                commento: commento
+                commento: commento,
+                prodotto: prodotto
             }).$promise
                 .then(ResourcesGeneratorService.successHandler, ResourcesGeneratorService.failureHandler);
         };
