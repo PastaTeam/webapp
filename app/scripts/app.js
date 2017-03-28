@@ -38,6 +38,10 @@ angular
                 templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl'
             })
+            .when('/prodotti/new', {
+                templateUrl: 'views/product.html',
+                controller: 'ProductCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
