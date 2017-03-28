@@ -1,0 +1,35 @@
+<h1 class="sign-in-title md-headline">Aggiungi Prodotto</h1>
+
+<div layout="row">
+    <md-card id="product-card" flex-gt-xs="50" flex="100" flex-gt-md="30">
+        <md-card-content>
+            <form name="productForm">
+                <md-input-container class="md-block no-bottom-margin">
+                    <label>Nome</label>
+                    <input name="name" ng-model="product.name" required>
+                    <div ng-messages="productForm.name.$error">
+                        <div ng-message="required">Completa questo campo</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block no-bottom-margin">
+                    <label>Descrizione</label>
+                    <input name="descrizione" ng-model="product.description" required>
+                    <div ng-messages="productForm.description.$error">
+                        <div ng-message="required">Completa questo campo</div>
+                    </div>
+                </md-input-container>
+
+            </form>
+            <p ng-if="error">{{error}}</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised md-primary button-100" ng-click="add();"
+                       ng-disabled="loading || registerForm.$invalid ">
+                <span ng-if="!loading">Aggiungi prodotto</span>
+                <md-progress-circular md-mode="indeterminate" ng-if="loading" class="button-loading"></md-progress-circular>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>
+
